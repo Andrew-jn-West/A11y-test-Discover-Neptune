@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discover Neptune - Interstellar Travel Adventures</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom CSS for elements that can't be done with Tailwind */
+        :root {
+            --primary: #4f46e5;
+            --primary-dark: #4338ca;
+            --secondary: #10b981;
+            --dark: #1e293b;
+            --light: #f8fafc;
+        }
+        
+        /* Reduced motion preferences */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            ::before,
+            ::after {
+                animation-delay: -1ms !important;
+                animation-duration: 1ms !important;
+                animation-iteration-count: 1 !important;
+                background-attachment: initial !important;
+                scroll-behavior: auto !important;
+                transition-duration: 0s !important;
+                transition-delay: 0s !important;
+            }
+        }
+        
+        /* Focus styles for keyboard navigation */
+        *:focus-visible {
+            outline: 3px solid var(--primary);
+            outline-offset: 2px;
+        }
+        
+        /* Dark mode */
+        .dark {
+            color-scheme: dark;
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #10b981;
+            --dark: #f8fafc;
+            --light: #1e293b;
+        }
+        
+        /* Text size adjustments */
+        .text-xs {
+            font-size: 0.75rem;
+            line-height: 1rem;
+        }
+        .text-sm {
+            font-size: 0.875rem;
+            line-height: 1.25rem;
+        }
+        .text-base {
+            font-size: 1rem;
+            line-height: 1.5rem;
+        }
+        .text-lg {
+            font-size: 1.125rem;
+            line-height: 1.75rem;
+        }
+        .text-xl {
+            font-size: 1.25rem;
+            line-height: 1.75rem;
+        }
+        .text-2xl {
+            font-size: 1.5rem;
+            line-height: 2rem;
+        }
+        .text-3xl {
+            font-size: 1.875rem;
+            line-height: 2.25rem;
+        }
+        .text-4xl {
+            font-size: 2.25rem;
+            line-height: 2.5rem;
+        }
+        .text-5xl {
+            font-size: 3rem;
+            line-height: 1;
+        }
+        .text-6xl {
+            font-size: 3.75rem;
+            line-height: 1;
+        }
+        
+        /* Animation for reduced motion preference */
+        @media (prefers-reduced-motion: no-preference) {
+            .fade-in {
+                animation: fadeIn 1s ease-in;
+            }
+            
+            @keyframes fadeIn {
+                from { opacity: 0; }
+                to { opacity: 1; }
+            }
+            
+            .slide-up {
+                animation: slideUp 0.8s ease-out;
+            }
+            
+            @keyframes slideUp {
+                from { transform: translateY(20px); opacity: 0; }
+                to { transform: translateY(0); opacity: 1; }
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
+    <!-- Accessibility controls -->
+    <div class="bg-gray-200 dark:bg-gray-800 p-2 flex flex-wrap gap-2 items-center justify-center">
+        <div class="flex items-center gap-2">
+            <label for="textSize" class="font-medium">Text Size:</label>
+            <select id="textSize" class="bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded px-2 py-1">
+                <option value="xs">Extra Small</option>
+                <option value="sm">Small</option>
+                <option value="base" selected>Medium</option>
+                <option value="lg">Large</option>
+                <option value="xl">Extra Large</option>
+            </select>
+        </div>
+        
+        <button id="darkModeToggle" class="bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500 px-3 py-1 rounded font-medium flex items-center gap-1">
+            <span class="dark:hidden">🌙 Dark Mode</span>
+            <span class="hidden dark:inline">☀️ Light Mode</span>
+        </button>
+        
+        <button id="reduceMotion" class="bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500 px-3 py-1 rounded font-medium">
+            Reduce Motion
+        </button>
+        
+        <div class="text-sm">
+            <span class="font-medium">Keyboard Nav:</span> 
+            <kbd class="bg-white dark:bg-gray-700 px-1 py-0.5 rounded border border-gray-300 dark:border-gray-600">Tab</kbd>, 
+            <kbd class="bg-white dark:bg-gray-700 px-1 py-0.5 rounded border border-gray-300 dark:border-gray-600">Shift</kbd> + 
+            <kbd class="bg-white dark:bg-gray-700 px-1 py-0.5 rounded border border-gray-300 dark:border-gray-600">Tab</kbd>, 
+            <kbd class="bg-white dark:bg-gray-700 px-1 py-0.5 rounded border border-gray-300 dark:border-gray-600">Enter</kbd>
+        </div>
+    </div>
+    
+    <!-- Skip to content link -->
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:bg-white focus:dark:bg-gray-800 focus:px-4 focus:py-2 focus:rounded focus:z-50 focus:font-bold">
+        Skip to main content
+    </a>
+    
+    <!-- Header -->
+    <header class="bg-indigo-600 dark:bg-indigo-800 text-white shadow-lg">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-full bg-white dark:bg-indigo-900 flex items-center justify-center">
+                        <span class="text-indigo-600 dark:text-indigo-300 text-2xl font-bold">N</span>
+                    </div>
+                    <h1 class="text-3xl font-bold">
+                        <span class="text-white">Discover</span>
+                        <span class="text-indigo-200 dark:text-indigo-300">Neptune</span>
+                    </h1>
+                </div>
+                
+                <nav aria-label="Main navigation">
+                    <ul class="flex flex-wrap gap-4 md:gap-6 justify-center">
+                        <li><a href="#destinations" class="hover:text-indigo-200 dark:hover:text-indigo-300 font-medium px-2 py-1 rounded transition-colors">Destinations</a></li>
+                        <li><a href="#packages" class="hover:text-indigo-200 dark:hover:text-indigo-300 font-medium px-2 py-1 rounded transition-colors">Packages</a></li>
+                        <li><a href="#about" class="hover:text-indigo-200 dark:hover:text-indigo-300 font-medium px-2 py-1 rounded transition-colors">About</a></li>
+                        <li><a href="#testimonials" class="hover:text-indigo-200 dark:hover:text-indigo-300 font-medium px-2 py-1 rounded transition-colors">Testimonials</a></li>
+                        <li><a href="#contact" class="hover:text-indigo-200 dark:hover:text-indigo-300 font-medium px-2 py-1 rounded transition-colors">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Main content -->
+    <main id="main-content">
+        <!-- Hero section -->
+        <section class="relative bg-gradient-to-b from-indigo-500 to-indigo-700 dark:from-indigo-700 dark:to-indigo-900 text-white py-20">
+            <div class="container mx-auto px-4">
+                <div class="max-w-3xl mx-auto text-center fade-in">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6 slide-up">Journey Beyond the Stars</h2>
+                    <p class="text-xl md:text-2xl mb-8 slide-up" style="animation-delay: 0.2s">Experience the breathtaking beauty of Neptune's moons and the wonders of our solar system's outer reaches.</p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center slide-up" style="animation-delay: 0.4s">
+                        <a href="#packages" class="bg-white text-indigo-600 hover:bg-indigo-50 dark:hover:bg-gray-100 font-bold py-3 px-6 rounded-lg shadow-lg transition-colors">Explore Packages</a>
+                        <a href="#contact" class="bg-transparent border-2 border-white hover:bg-white hover:text-indigo-600 font-bold py-3 px-6 rounded-lg shadow-lg transition-colors">Book a Consultation</a>
+                    </div>
+                </div>
+            </div>
+            <div class="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-gray-50 dark:from-gray-900 to-transparent"></div>
+        </section>
+        
+        <!-- Features -->
+        <section class="py-16 bg-gray-50 dark:bg-gray-800">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center mb-12">Why Choose Discover Neptune?</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                        <div class="w-12 h-12 bg-indigo-100 dark:bg-indigo-900 rounded-full flex items-center justify-center mb-4">
+                            <span class="text-indigo-600 dark:text-indigo-300 text-xl">🚀</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Cutting-Edge Technology</h3>
+                        <p>Our fleet of fusion-powered spacecraft offer the safest and most comfortable journey to the outer planets.</p>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                        <div class="w-12 h-12 bg-indigo-100 dark:bg-indigo-900 rounded-full flex items-center justify-center mb-4">
+                            <span class="text-indigo-600 dark:text-indigo-300 text-xl">🛰️</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Expert Guides</h3>
+                        <p>Our team of exo-planetologists and veteran astronauts will enhance your journey with their knowledge.</p>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                        <div class="w-12 h-12 bg-indigo-100 dark:bg-indigo-900 rounded-full flex items-center justify-center mb-4">
+                            <span class="text-indigo-600 dark:text-indigo-300 text-xl">🌌</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Sustainable Tourism</h3>
+                        <p>We're committed to preserving the pristine environments of the outer planets for future generations.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Destinations -->
+        <section id="destinations" class="py-16 bg-white dark:bg-gray-900">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center mb-4">Explore Neptune's Moons</h2>
+                <p class="text-center text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-12">Each of Neptune's moons offers unique landscapes and experiences unlike anything in the inner solar system.</p>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div class="bg-gray-50 dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg flex flex-col md:flex-row">
+                        <div class="md:w-1/2 h-64 md:h-auto bg-gradient-to-br from-blue-400 to-indigo-600 flex items-center justify-center">
+                            <span class="text-6xl">🌕</span>
+                        </div>
+                        <div class="md:w-1/2 p-6">
+                            <h3 class="text-2xl font-bold mb-2">Triton</h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-4">Neptune's largest moon with active geysers and a retrograde orbit. Experience the nitrogen ice volcanoes and vast cantaloupe terrain.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 px-3 py-1 rounded-full text-sm">Geysers</span>
+                                <span class="bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 px-3 py-1 rounded-full text-sm">Ice Volcanoes</span>
+                                <span class="bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 px-3 py-1 rounded-full text-sm">Retrograde Orbit</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-50 dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg flex flex-col md:flex-row">
+                        <div class="md:w-1/2 h-64 md:h-auto bg-gradient-to-br from-purple-400 to-indigo-600 flex items-center justify-center">
+                            <span class="text-6xl">🪐</span>
+                        </div>
+                        <div class="md:w-1/2 p-6">
+                            <h3 class="text-2xl font-bold mb-2">Proteus</h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-4">The second largest moon with an irregular shape and heavily cratered surface. Perfect for geological expeditions and low-gravity hiking.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 px-3 py-1 rounded-full text-sm">Cratered</span>
+                                <span class="bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 px-3 py-1 rounded-full text-sm">Irregular Shape</span>
+                                <span class="bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 px-3 py-1 rounded-full text-sm">Dark Surface</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-50 dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg flex flex-col md:flex-row">
+                        <div class="md:w-1/2 h-64 md:h-auto bg-gradient-to-br from-cyan-400 to-indigo-600 flex items-center justify-center">
+                            <span class="text-6xl">🌑</span>
+                        </div>
+                        <div class="md:w-1/2 p-6">
+                            <h3 class="text-2xl font-bold mb-2">Nereid</h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-4">One of the most eccentric moons in the solar system with a highly elliptical orbit offering spectacular views of Neptune.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 px-3 py-1 rounded-full text-sm">Eccentric Orbit</span>
+                                <span class="bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 px-3 py-1 rounded-full text-sm">Spectacular Views</span>
+                                <span class="bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 px-3 py-1 rounded-full text-sm">Remote</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-50 dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg flex flex-col md:flex-row">
+                        <div class="md:w-1/2 h-64 md:h-auto bg-gradient-to-br from-blue-500 to-indigo-700 flex items-center justify-center">
+                            <span class="text-6xl">🌊</span>
+                        </div>
+                        <div class="md:w-1/2 p-6">
+                            <h3 class="text-2xl font-bold mb-2">Larissa</h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-4">A small, irregular moon with ancient impact basins. Ideal for scientific research and extreme sports in low gravity.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 px-3 py-1 rounded-full text-sm">Irregular</span>
+                                <span class="bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 px-3 py-1 rounded-full text-sm">Low Gravity</span>
+                                <span class="bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 px-3 py-1 rounded-full text-sm">Scientific</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Packages -->
+        <section id="packages" class="py-16 bg-gray-50 dark:bg-gray-800">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center mb-4">Our Travel Packages</h2>
+                <p class="text-center text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-12">Choose from our range of carefully curated packages to suit every type of space traveler.</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                    <div class="bg-white dark:bg-gray-700 rounded-xl shadow-lg overflow-hidden border border-gray-200 dark:border-gray-600">
+                        <div class="bg-indigo-100 dark:bg-indigo-900 p-6 text-center">
+                            <h3 class="text-2xl font-bold mb-2">Starter Explorer</h3>
+                            <p class="text-gray-600 dark:text-gray-400">Perfect for first-time visitors</p>
+                        </div>
+                        <div class="p-6">
+                            <div class="text-4xl font-bold mb-4">$49,999</div>
+                            <ul class="space-y-3 mb-6">
+                                <li class="flex items-center">
+                                    <span class="text-green-500 mr-2">✓</span>
+                                    <span>7-day orbital tour of Neptune</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="text-green-500 mr-2">✓</span>
+                                    <span>2 Triton surface excursions</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="text-green-500 mr-2">✓</span>
+                                    <span>Standard cabin accommodation</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="text-green-500 mr-2">✓</span>
+                                    <span>Basic meals included</span>
+                                </li>
+                            </ul>
+                            <button class="w-full bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-700 dark:hover:bg-indigo-800 text-white font-bold py-3 px-4 rounded-lg transition-colors">
+                                Book Now
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-gray-700 rounded-xl shadow-lg overflow-hidden border-2 border-indigo-500 dark:border-indigo-400 transform scale-105 z-10">
+                        <div class="bg-indigo-600 dark:bg-indigo-800 text-white p-6 text-center">
+                            <h3 class="text-2xl font-bold mb-2">Premium Voyager</h3>
+                            <p>Our most popular package</p>
+                        </div>
+                        <div class="p-6">
+                            <div class="text-4xl font-bold mb-4">$89,999</div>
+                            <ul class="space-y-3 mb-6">
+                                <li class="flex items-center">
+                                    <span class="text-green-500 mr-2">✓</span>
+                                    <span>14-day Neptune system tour</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="text-green-500 mr-2">✓</span>
+                                    <span>4 surface excursions (Triton & Proteus)</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="text-green-500 mr-2">✓</span>
+                                    <span>Deluxe cabin with viewport</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="text-green-500 mr-2">✓</span>
+                                    <span>Gourmet meals & zero-G dining</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="text-green-500 mr-2">✓</span>
+                                    <span>Personal guide</span>
+                                </li>
+                            </ul>
+                            <button class="w-full bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-700 dark:hover:bg-indigo-800 text-white font-bold py-3 px-4 rounded-lg transition-colors">
+                                Book Now
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-gray-700 rounded-xl shadow-lg overflow-hidden border border-gray-200 dark:border-gray-600">
+                        <div class="bg-indigo-100 dark:bg-indigo-900 p-6 text-center">
+                            <h3 class="text-2xl font-bold mb-2">Ultimate Odyssey</h3>
+                            <p class="text-gray-600 dark:text-gray-400">For the discerning space traveler</p>
+                        </div>
+                        <div class="p-6">
+                            <div class="text-4xl font-bold mb-4">$149,999</div>
+                            <ul class="space-y-3 mb-6">
+                                <li class="flex items-center">
+                                    <span class="text-green-500 mr-2">✓</span>
+                                    <span>30-day grand tour of Neptune system</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="text-green-500 mr-2">✓</span>
+                                    <span>8 surface excursions (all major moons)</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="text-green-500 mr-2">✓</span>
+                                    <span>Luxury suite with panoramic views</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="text-green-500 mr-2">✓</span>
+                                    <span>Gourmet meals by celebrity chef</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="text-green-500 mr-2">✓</span>
+                                    <span>Personal guide & photographer</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="text-green-500 mr-2">✓</span>
+                                    <span>VIP launch experience</span>
+                                </li>
+                            </ul>
+                            <button class="w-full bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-700 dark:hover:bg-indigo-800 text-white font-bold py-3 px-4 rounded-lg transition-colors">
+                                Book Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- About -->
+        <section id="about" class="py-16 bg-white dark:bg-gray-900">
+            <div class="container mx-auto px-4">
+                <div class="flex flex-col lg:flex-row items-center gap-12">
+                    <div class="lg:w-1/2">
+                        <h2 class="text-3xl font-bold mb-6">About Discover Neptune</h2>
+                        <p class="text-lg mb-4">Founded in 2052, Discover Neptune is the premier provider of interplanetary travel experiences to the outer solar system. Our mission is to make the wonders of Neptune and its moons accessible to civilian explorers while maintaining the highest standards of safety and environmental responsibility.</p>
+                        <p class="mb-4">With over 50 successful missions to date, our team of expert astronauts, engineers, and hospitality professionals have created unforgettable experiences for more than 1,000 space tourists.</p>
+                        <div class="grid grid-cols-2 gap-4 mt-8">
+                            <div class="bg-indigo-100 dark:bg-indigo-900 p-4 rounded-lg">
+                                <div class="text-3xl font-bold text-indigo-600 dark:text-indigo-300 mb-1">50+</div>
+                                <div class="text-gray-600 dark:text-gray-400">Successful Missions</div>
+                            </div>
+                            <div class="bg-indigo-100 dark:bg-indigo-900 p-4 rounded-lg">
+                                <div class="text-3xl font-bold text-indigo-600 dark:text-indigo-300 mb-1">100%</div>
+                                <div class="text-gray-600 dark:text-gray-400">Safety Record</div>
+                            </div>
+                            <div class="bg-indigo-100 dark:bg-indigo-900 p-4 rounded-lg">
+                                <div class="text-3xl font-bold text-indigo-600 dark:text-indigo-300 mb-1">1K+</div>
+                                <div class="text-gray-600 dark:text-gray-400">Happy Travelers</div>
+                            </div>
+                            <div class="bg-indigo-100 dark:bg-indigo-900 p-4 rounded-lg">
+                                <div class="text-3xl font-bold text-indigo-600 dark:text-indigo-300 mb-1">5⭐</div>
+                                <div class="text-gray-600 dark:text-gray-400">Average Rating</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lg:w-1/2">
+                        <div class="bg-gray-100 dark:bg-gray-700 rounded-xl overflow-hidden aspect-video flex items-center justify-center">
+                            <span class="text-6xl">🪐</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Testimonials -->
+        <section id="testimonials" class="py-16 bg-gray-50 dark:bg-gray-800">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center mb-12">What Our Travelers Say</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full bg-indigo-100 dark:bg-indigo-900 flex items-center justify-center mr-4">
+                                <span class="text-indigo-600 dark:text-indigo-300">A</span>
+                            </div>
+                            <div>
+                                <h3 class="font-bold">Amanda K.</h3>
+                                <div class="flex text-yellow-400">
+                                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-400">"The views of Neptune from Triton were absolutely breathtaking. The crew was professional and made us feel safe the entire time. Worth every penny!"</p>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full bg-indigo-100 dark:bg-indigo-900 flex items-center justify-center mr-4">
+                                <span class="text-indigo-600 dark:text-indigo-300">R</span>
+                            </div>
+                            <div>
+                                <h3 class="font-bold">Raj P.</h3>
+                                <div class="flex text-yellow-400">
+                                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-400">"As a planetary scientist, I was impressed by the depth of knowledge from our guides. The geological formations on Proteus exceeded all expectations."</p>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full bg-indigo-100 dark:bg-indigo-900 flex items-center justify-center mr-4">
+                                <span class="text-indigo-600 dark:text-indigo-300">M</span>
+                            </div>
+                            <div>
+                                <h3 class="font-bold">Maria S.</h3>
+                                <div class="flex text-yellow-400">
+                                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-400">"The luxury suite was incredible - waking up to Neptune filling my window was surreal. The zero-G dining experience was both delicious and fun!"</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Contact -->
+        <section id="contact" class="py-16 bg-white dark:bg-gray-900">
+            <div class="container mx-auto px-4">
+                <div class="max-w-4xl mx-auto">
+                    <h2 class="text-3xl font-bold text-center mb-4">Ready for Your Adventure?</h2>
+                    <p class="text-center text-gray-600 dark:text-gray-400 mb-12">Contact our travel specialists to plan your perfect Neptune experience.</p>
+                    
+                    <div class="bg-gray-50 dark:bg-gray-800 rounded-xl shadow-md p-8">
+                        <form id="contactForm" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block mb-2 font-medium">Full Name</label>
+                                <input type="text" id="name" name="name" required class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                            </div>
+                            <div>
+                                <label for="email" class="block mb-2 font-medium">Email Address</label>
+                                <input type="email" id="email" name="email" required class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                            </div>
+                            <div>
+                                <label for="phone" class="block mb-2 font-medium">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                            </div>
+                            <div>
+                                <label for="package" class="block mb-2 font-medium">Package Interest</label>
+                                <select id="package" name="package" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                                    <option value="">Select a package</option>
+                                    <option value="starter">Starter Explorer</option>
+                                    <option value="premium">Premium Voyager</option>
+                                    <option value="ultimate">Ultimate Odyssey</option>
+                                    <option value="custom">Custom Itinerary</option>
+                                </select>
+                            </div>
+                            <div class="md:col-span-2">
+                                <label for="message" class="block mb-2 font-medium">Your Message</label>
+                                <textarea id="message" name="message" rows="4" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"></textarea>
+                            </div>
+                            <div class="md:col-span-2">
+                                <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-700 dark:hover:bg-indigo-800 text-white font-bold py-3 px-4 rounded-lg transition-colors">
+                                    Send Message
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- FAQ -->
+        <section class="py-16 bg-gray-50 dark:bg-gray-800">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center mb-12">Frequently Asked Questions</h2>
+                
+                <div class="max-w-3xl mx-auto space-y-4">
+                    <details class="bg-white dark:bg-gray-700 rounded-lg shadow-md p-4 open:ring-1 open:ring-indigo-500 open:shadow-lg">
+                        <summary class="font-bold text-lg cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:rounded">What are the physical requirements for this trip?</summary>
+                        <div class="mt-3 text-gray-600 dark:text-gray-400">
+                            <p>All passengers must pass a comprehensive medical examination to ensure they can handle the rigors of space travel. Generally, you should be in good health with no serious cardiovascular or musculoskeletal conditions. We provide pre-flight training to prepare you for microgravity conditions.</p>
+                        </div>
+                    </details>
+                    
+                    <details class="bg-white dark:bg-gray-700 rounded-lg shadow-md p-4 open:ring-1 open:ring-indigo-500 open:shadow-lg">
+                        <summary class="font-bold text-lg cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:rounded">How long does the journey to Neptune take?</summary>
+                        <div class="mt-3 text-gray-600 dark:text-gray-400">
+                            <p>With our advanced fusion propulsion systems, the journey from Earth to Neptune takes approximately 3 weeks each way. The total duration of your trip depends on the package you choose, ranging from 7 days to 1 month in the Neptune system.</p>
+                        </div>
+                    </details>
+                    
+                    <details class="bg-white dark:bg-gray-700 rounded-lg shadow-md p-4 open:ring-1 open:ring-indigo-500 open:shadow-lg">
+                        <summary class="font-bold text-lg cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:rounded">What safety measures are in place?</summary>
+                        <div class="mt-3 text-gray-600 dark:text-gray-400">
+                            <p>Our spacecraft feature redundant life support systems, radiation shielding, and emergency return capabilities. All crew members are extensively trained in emergency procedures. We maintain a 100% safety record across all our missions.</p>
+                        </div>
+                    </details>
+                    
+                    <details class="bg-white dark:bg-gray-700 rounded-lg shadow-md p-4 open:ring-1 open:ring-indigo-500 open:shadow-lg">
+                        <summary class="font-bold text-lg cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:rounded">Can I cancel or reschedule my trip?</summary>
+                        <div class="mt-3 text-gray-600 dark:text-gray-400">
+                            <p>You may cancel up to 90 days before departure for a full refund. Between 90-30 days, a 50% refund is available. Within 30 days, trips are non-refundable but may be rescheduled (subject to availability) for a 10% fee. We strongly recommend travel insurance.</p>
+                        </div>
+                    </details>
+                    
+                    <details class="bg-white dark:bg-gray-700 rounded-lg shadow-md p-4 open:ring-1 open:ring-indigo-500 open:shadow-lg">
+                        <summary class="font-bold text-lg cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:rounded">What should I pack for the journey?</summary>
+                        <div class="mt-3 text-gray-600 dark:text-gray-400">
+                            <p>We provide all necessary space suits and safety equipment. You should pack comfortable clothing (we recommend 5-7 outfits), personal hygiene items (all liquids must be in approved containers), and any special medications. A detailed packing list will be provided after booking.</p>
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-300 py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold text-white mb-4">Discover Neptune</h3>
+                    <p class="mb-4">Making the outer solar system accessible to civilian explorers since 2052.</p>
+                    <div class="flex gap-4">
+                        <a href="#" aria-label="Facebook" class="hover:text-white transition-colors">📱</a>
+                        <a href="#" aria-label="Twitter" class="hover:text-white transition-colors">💬</a>
+                        <a href="#" aria-label="Instagram" class="hover:text-white transition-colors">📸</a>
+                        <a href="#" aria-label="YouTube" class="hover:text-white transition-colors">🎥</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold text-white mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#destinations" class="hover:text-white transition-colors">Destinations</a></li>
+                        <li><a href="#packages" class="hover:text-white transition-colors">Packages</a></li>
+                        <li><a href="#about" class="hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="#testimonials" class="hover:text-white transition-colors">Testimonials</a></li>
+                        <li><a href="#contact" class="hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold text-white mb-4">Legal</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-white transition-colors">Terms of Service</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Cookie Policy</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Accessibility</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Refund Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold text-white mb-4">Contact Us</h4>
+                    <address class="not-italic">
+                        <p class="mb-2">Orbital Office Complex</p>
+                        <p class="mb-2">Geostationary Orbit, Slot 42</p>
+                        <p class="mb-2">Earth-Moon System</p>
+                        <p class="mb-4">Sol, Milky Way</p>
+                        <p class="mb-2">Email: <a href="mailto:info@discoverneptune.com" class="hover:text-white transition-colors">info@discoverneptune.com</a></p>
+                        <p>Phone: <a href="tel:+18005551234" class="hover:text-white transition-colors">1-800-555-1234</a></p>
+                    </address>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p>&copy; 2052 Discover Neptune. All rights reserved.</p>
+                <p class="mt-2 text-sm">This website conforms to WCAG 2.2 AAA and EN 301 549 accessibility standards.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Text size adjustment
+        const textSizeSelect = document.getElementById('textSize');
+        textSizeSelect.addEventListener('change', (e) => {
+            document.body.className = document.body.className.replace(/\btext-(xs|sm|base|lg|xl)\b/g, '');
+            document.body.classList.add(`text-${e.target.value}`);
+        });
+        
+        // Dark mode toggle
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        darkModeToggle.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+            localStorage.setItem('darkMode', document.documentElement.classList.contains('dark'));
+        });
+        
+        // Check for saved dark mode preference
+        if (localStorage.getItem('darkMode') === 'true') {
+            document.documentElement.classList.add('dark');
+        } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        
+        // Reduce motion
+        const reduceMotionBtn = document.getElementById('reduceMotion');
+        reduceMotionBtn.addEventListener('click', () => {
+            alert("Motion reduction settings are now controlled by your operating system preferences. Please adjust in your system settings.");
+        });
+        
+        // Form submission
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert("Thank you for your message! Our travel specialists will contact you soon.");
+            contactForm.reset();
+        });
+        
+        // Keyboard navigation enhancements
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Tab') {
+                document.documentElement.classList.add('keyboard-navigation');
+            }
+        });
+        
+        document.addEventListener('mousedown', () => {
+            document.documentElement.classList.remove('keyboard-navigation');
+        });
+    </script>
+<p style="border-radius: 8px; text-align: center; font-size: 12px; color: #fff; margin-top: 16px;position: fixed; left: 8px; bottom: 8px; z-index: 10; background: rgba(0, 0, 0, 0.8); padding: 4px 8px;">Made with <img src="https://enzostvs-deepsite.hf.space/logo.svg" alt="DeepSite Logo" style="width: 16px; height: 16px; vertical-align: middle;display:inline-block;margin-right:3px;filter:brightness(0) invert(1);"><a href="https://enzostvs-deepsite.hf.space" style="color: #fff;text-decoration: underline;" target="_blank" >DeepSite</a> - 🧬 <a href="https://enzostvs-deepsite.hf.space?remix=a-west/discover-neptune" style="color: #fff;text-decoration: underline;" target="_blank" >Remix</a></p></body>
+</html>
