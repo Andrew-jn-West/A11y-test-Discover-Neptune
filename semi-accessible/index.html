@@ -36,7 +36,7 @@
             font-family: 'Poppins', sans-serif;
             scroll-behavior: smooth;
         }
-        
+
         .hero-image {
             background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1473&q=80');
             height: 80vh;
@@ -45,27 +45,30 @@
             background-size: cover;
             position: relative;
         }
-        
+
         .destination-card:hover .destination-overlay {
             opacity: 1;
             transform: translateY(0);
         }
-        
+
         .testimonial-card {
             transition: all 0.3s ease;
         }
-        
+
         .testimonial-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
-        
+
         .newsletter-input:focus {
             outline: none;
             box-shadow: 0 0 0 3px rgba(70, 130, 180, 0.3);
         }
     </style>
 </head>
+
+
+
 <body class="bg-gray-50">
     <!-- Navigation -->
     <nav class="bg-white shadow-lg fixed w-full z-50">
@@ -94,7 +97,7 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- Mobile menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
@@ -158,7 +161,7 @@
                 <h2 class="text-3xl font-bold text-neptune-dark mb-4">Featured Destinations</h2>
                 <p class="text-gray-600 max-w-2xl mx-auto">Explore our handpicked selection of the world's most breathtaking locations</p>
             </div>
-            
+
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Destination 1 -->
                 <div class="destination-card relative overflow-hidden rounded-lg shadow-lg group">
@@ -172,7 +175,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Destination 2 -->
                 <div class="destination-card relative overflow-hidden rounded-lg shadow-lg group">
                     <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1450&q=80" alt="Bali" class="w-full h-64 object-cover">
@@ -185,7 +188,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Destination 3 -->
                 <div class="destination-card relative overflow-hidden rounded-lg shadow-lg group">
                     <img src="https://images.unsplash.com/photo-1518692942011-5a99b4a0b1ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Santorini" class="w-full h-64 object-cover">
@@ -199,7 +202,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="text-center mt-12">
                 <button class="bg-white text-neptune-dark hover:bg-gray-100 border border-neptune px-6 py-3 rounded-md font-medium transition duration-300">View All Destinations</button>
             </div>
@@ -213,7 +216,7 @@
                 <h2 class="text-3xl font-bold text-neptune-dark mb-4">Why Choose Discover Neptune</h2>
                 <p class="text-gray-600 max-w-2xl mx-auto">We go above and beyond to make your travel experience unforgettable</p>
             </div>
-            
+
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="text-center p-6 rounded-lg hover:shadow-lg transition duration-300">
                     <div class="bg-ocean text-neptune-dark rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
@@ -222,7 +225,7 @@
                     <h3 class="text-xl font-semibold text-neptune-dark mb-2">Global Network</h3>
                     <p class="text-gray-600">Access to exclusive destinations and experiences through our worldwide partnerships</p>
                 </div>
-                
+
                 <div class="text-center p-6 rounded-lg hover:shadow-lg transition duration-300">
                     <div class="bg-ocean text-neptune-dark rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                         <i class="fas fa-concierge-bell text-2xl"></i>
@@ -230,7 +233,7 @@
                     <h3 class="text-xl font-semibold text-neptune-dark mb-2">Personalized Service</h3>
                     <p class="text-gray-600">Dedicated travel concierge to customize every detail of your journey</p>
                 </div>
-                
+
                 <div class="text-center p-6 rounded-lg hover:shadow-lg transition duration-300">
                     <div class="bg-ocean text-neptune-dark rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                         <i class="fas fa-shield-alt text-2xl"></i>
@@ -249,7 +252,7 @@
                 <h2 class="text-3xl font-bold text-neptune-dark mb-4">Popular Packages</h2>
                 <p class="text-gray-600 max-w-2xl mx-auto">Our most sought-after travel experiences</p>
             </div>
-            
+
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Package 1 -->
                 <div class="bg-white rounded-lg overflow-hidden shadow-lg transition duration-300 hover:shadow-xl">
@@ -278,7 +281,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Package 2 -->
                 <div class="bg-white rounded-lg overflow-hidden shadow-lg transition duration-300 hover:shadow-xl">
                     <div class="relative">
@@ -306,7 +309,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Package 3 -->
                 <div class="bg-white rounded-lg overflow-hidden shadow-lg transition duration-300 hover:shadow-xl">
                     <img src="https://images.unsplash.com/photo-1533107862482-0e6974b06ec4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Greek Island Hopping" class="w-full h-48 object-cover">
@@ -332,7 +335,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="text-center mt-12">
                 <button class="bg-neptune hover:bg-neptune-dark text-white px-6 py-3 rounded-md font-medium transition duration-300">View All Packages</button>
             </div>
@@ -346,7 +349,7 @@
                 <h2 class="text-3xl font-bold text-neptune-dark mb-4">What Our Travelers Say</h2>
                 <p class="text-gray-600 max-w-2xl mx-auto">Don't just take our word for it - hear from our satisfied customers</p>
             </div>
-            
+
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Testimonial 1 -->
                 <div class="testimonial-card bg-gray-50 p-8 rounded-lg">
@@ -368,7 +371,7 @@
                     <p class="text-gray-600 mb-4">"The Maldives trip organized by Discover Neptune was beyond amazing. Every detail was perfect, from the private transfers to the stunning resort. Will definitely book with them again!"</p>
                     <div class="text-sm text-gray-500">Maldives Luxury Escape - June 2023</div>
                 </div>
-                
+
                 <!-- Testimonial 2 -->
                 <div class="testimonial-card bg-gray-50 p-8 rounded-lg">
                     <div class="flex items-center mb-4">
@@ -389,7 +392,7 @@
                     <p class="text-gray-600 mb-4">"Our Bali adventure was seamless thanks to Discover Neptune. They handled all the logistics and even arranged special experiences we wouldn't have found on our own. Highly recommend!"</p>
                     <div class="text-sm text-gray-500">Bali Adventure - April 2023</div>
                 </div>
-                
+
                 <!-- Testimonial 3 -->
                 <div class="testimonial-card bg-gray-50 p-8 rounded-lg">
                     <div class="flex items-center mb-4">
@@ -419,12 +422,12 @@
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 class="text-3xl font-bold mb-4">Get Travel Inspiration</h2>
             <p class="text-ocean-light mb-8 max-w-2xl mx-auto">Subscribe to our newsletter for exclusive deals, travel tips, and destination inspiration</p>
-            
+
             <div class="flex flex-col sm:flex-row gap-2 max-w-md mx-auto">
                 <input type="email" placeholder="Your email address" class="newsletter-input flex-grow px-4 py-3 rounded-md text-gray-900 focus:ring-2 focus:ring-white">
                 <button class="bg-neptune-dark hover:bg-neptune-light text-white px-6 py-3 rounded-md font-medium transition duration-300">Subscribe</button>
             </div>
-            
+
             <p class="text-sm text-ocean-light mt-4">We respect your privacy. Unsubscribe at any time.</p>
         </div>
     </section>
@@ -446,7 +449,7 @@
                         <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
-                
+
                 <div>
                     <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
                     <ul class="space-y-2">
@@ -457,7 +460,7 @@
                         <li><a href="#" class="text-gray-400 hover:text-white">Blog</a></li>
                     </ul>
                 </div>
-                
+
                 <div>
                     <h3 class="text-lg font-semibold mb-4">Support</h3>
                     <ul class="space-y-2">
@@ -468,7 +471,7 @@
                         <li><a href="#" class="text-gray-400 hover:text-white">Travel Insurance</a></li>
                     </ul>
                 </div>
-                
+
                 <div>
                     <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
                     <address class="not-italic text-gray-400">
@@ -478,7 +481,7 @@
                     </address>
                 </div>
             </div>
-            
+
             <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
                 <p class="text-gray-400 text-sm mb-4 md:mb-0">© 2023 Discover Neptune. All rights reserved.</p>
                 <div class="flex space-x-6">
@@ -500,14 +503,14 @@
         // Mobile menu toggle
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
-        
+
         mobileMenuButton.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
-        
+
         // Back to top button
         const backToTopButton = document.getElementById('back-to-top');
-        
+
         window.addEventListener('scroll', () => {
             if (window.pageYOffset > 300) {
                 backToTopButton.classList.remove('opacity-0', 'invisible');
@@ -517,29 +520,29 @@
                 backToTopButton.classList.add('opacity-0', 'invisible');
             }
         });
-        
+
         backToTopButton.addEventListener('click', () => {
             window.scrollTo({
                 top: 0,
                 behavior: 'smooth'
             });
         });
-        
+
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
-                
+
                 const targetId = this.getAttribute('href');
                 if (targetId === '#') return;
-                
+
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
                     window.scrollTo({
                         top: targetElement.offsetTop - 80,
                         behavior: 'smooth'
                     });
-                    
+
                     // Close mobile menu if open
                     if (!mobileMenu.classList.contains('hidden')) {
                         mobileMenu.classList.add('hidden');
@@ -547,7 +550,7 @@
                 }
             });
         });
-        
+
         // Package booking buttons
         document.querySelectorAll('.package-book-button').forEach(button => {
             button.addEventListener('click', () => {
