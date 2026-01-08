@@ -6,7 +6,7 @@ colorTo: pink
 sdk: static
 pinned: false
 tags:
-  - deepsite
+  - made using deepsite
 
 ---
 
@@ -29,6 +29,3 @@ Any images within this website are either credited below in the footer, or were 
 ---
 
 This project has shared ownership between the developer who made it (me), and N Squared LLC, for the purposes of Demonstration of implementing core accessibility, as well as being portfolio work.
-
-Check out the configuration reference at https://huggingface.co/docs/hub/spaces-config-reference
-
